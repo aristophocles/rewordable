@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import Deck from './containers/Deck';
+import Field from './containers/Field';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Deck />
+        <Field />
       </header>
     </div>
   );

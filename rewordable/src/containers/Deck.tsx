@@ -1,19 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import shuffle from 'lodash.shuffle';
-import { Fragments } from '../fixtures/fixtures';
+import React from 'react';
 import { Card } from '../types';
 
-interface DeckProps {};
+interface DeckProps {
+    deckCards: Card[];
+};
 
 function Deck(props: DeckProps) {
-    const [deckCards, setDeckCards] = useState<Card[]>([]);
-
-    useEffect(() => {
-        const shuffledDeck = shuffle(Fragments);
-        setDeckCards(shuffledDeck);
-    }, []);
-
-    return (<div>{deckCards.length && deckCards[3].value}</div>);
+    return (<button>Deck</button>);
 }
 
 export default Deck;
