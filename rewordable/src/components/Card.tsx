@@ -5,7 +5,7 @@ interface CardProps {
 };
 
 function Card(props: CardProps) {
-    return <div>Card Value: ${props.value}</div>;
+    return <div>Card Value: {props.value}</div>;
 }
 
 export default Card;

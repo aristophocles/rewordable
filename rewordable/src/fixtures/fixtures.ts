@@ -1,4 +1,6 @@
-export const Fragments = [
+import { Card } from '../types';
+
+export const Fragments: Card[] = [
     {
         color: 'blue',
         id: 1,
