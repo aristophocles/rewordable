@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card } from '../types';
+import { Fragment } from '../types';
 
 interface DeckProps {
-    deckCards: Card[];
+    deckCards: Fragment[];
 };
 
 function Deck(props: DeckProps) {

@@ -3,26 +3,26 @@ import shuffle from 'lodash.shuffle';
 import Deck from './Deck';
 import PlayerHand from './PlayerHand';
 import { Fragments } from '../fixtures/fixtures';
-import { Card } from '../types';
+import { Fragment } from '../types';
 
 interface FieldProps {};
 
 function Field(props: FieldProps) {
-    const [deckCards, setDeckCards] = useState<Card[]>([]);
-    const [playerCards, setPlayerCards] = useState<Card[]>([]);
+    const [deckFragments, setDeckFragments] = useState<Fragment[]>([]);
+    const [playerFragments, setPlayerFragments] = useState<Fragment[]>([]);
 
     useEffect(() => {
         const shuffledFragments = shuffle(Fragments);
-        setDeckCards(shuffledFragments);
+        setDeckFragments(shuffledFragments);
 
-        const topCards = shuffledFragments.slice(0, 4);
-        setPlayerCards(topCards);
+        const topFragments = shuffledFragments.slice(0, 4);
+        setPlayerFragments(topFragments);
     }, []);
 
     return (
         <div>
-            <Deck deckCards={deckCards} />
-            <PlayerHand cards={playerCards} />
+            <Deck deckCards={deckFragments} />
+            <PlayerHand cards={playerFragments} />
         </div>
     )
 }

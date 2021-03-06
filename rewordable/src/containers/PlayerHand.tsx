@@ -1,14 +1,15 @@
 import React from 'react';
-import { Card } from '../types';
+import Card from '../components/Card';
+import { Fragment } from '../types';
 
 interface PlayerHandProps {
-    cards: Card[];
+    cards: Fragment[];
 };
 
 function PlayerHand(props: PlayerHandProps) {
     return (
         <div>
-            {props.cards.length && props.cards.map((card) => <div>{card.value}</div>)}
+            {props.cards.length && props.cards.map((card) => <Card value={card.value}/>)}
         </div>
     )
 }
