@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Card from '../components/Card';
 import { Fragment } from '../types';
 
@@ -7,10 +8,14 @@ interface PlayerHandProps {
 };
 
 function PlayerHand(props: PlayerHandProps) {
+    const Wrapper = styled.div`
+        display: flex;
+    `;
+
     return (
-        <div>
+        <Wrapper>
             {props.cards.length && props.cards.map((card) => <Card value={card.value}/>)}
-        </div>
+        </Wrapper>
     )
 }
 
