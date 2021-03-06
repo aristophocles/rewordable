@@ -14,7 +14,7 @@ function PlayerHand(props: PlayerHandProps) {
 
     return (
         <Wrapper>
-            {props.cards.length && props.cards.map((card) => <Card value={card.value}/>)}
+            {props.cards.length && props.cards.map((card) => <Card fragment={card}/>)}
         </Wrapper>
     )
 }

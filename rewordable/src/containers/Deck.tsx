@@ -19,12 +19,19 @@ function Deck(props: DeckProps) {
     }, []);
 
     const Wrapper = styled.div`
-        border-radius: 24px;
+        border-radius: 8px;
         margin-bottom: 24px;
-        padding: 72px 52px;
-        background: lightpink;
+        padding: 68px 48px;
+        background: black;
         min-height: 32px;
         min-width: 32px;
+    `;
+
+    const Logo = styled.div`
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: pink;
     `;
 
     function onDraw() {
@@ -40,7 +47,11 @@ function Deck(props: DeckProps) {
         }
     }
 
-    return (<Wrapper onClick={onDraw}></Wrapper>);
+    return (
+        <Wrapper onClick={onDraw}>
+            <Logo />
+        </Wrapper>
+    );
 }
 
 export default Deck;
