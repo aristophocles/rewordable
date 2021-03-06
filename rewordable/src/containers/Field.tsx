@@ -20,10 +20,10 @@ function Field(props: FieldProps) {
     }, []);
 
     return (
-        <div>
+        <>
             <Deck deckCards={deckFragments} />
             <PlayerHand cards={playerFragments} />
-        </div>
+        </>
     )
 }
 

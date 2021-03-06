@@ -13,10 +13,10 @@ function Card(props: CardProps) {
     `;
 
     const CardValue = styled.div`
-        font-size: 12px;
+        font-size: 24px;
         font-weight: bold;
         color: black;
-        min-width: 16px;
+        min-width: 32px;
     `;
 
     return (
