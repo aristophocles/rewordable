@@ -7,6 +7,7 @@ interface CardProps {
 
 function Card(props: CardProps) {
     const Wrapper = styled.section`
+        border-radius: 24px;
         margin: 8px;
         padding: 72px 52px;
         background: papayawhip;

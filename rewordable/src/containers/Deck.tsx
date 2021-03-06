@@ -19,6 +19,7 @@ function Deck(props: DeckProps) {
     }, []);
 
     const Wrapper = styled.div`
+        border-radius: 24px;
         margin-bottom: 24px;
         padding: 72px 52px;
         background: lightpink;
