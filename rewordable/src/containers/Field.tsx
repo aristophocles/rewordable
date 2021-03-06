@@ -1,28 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import shuffle from 'lodash.shuffle';
+import React, { useState } from 'react';
 import Deck from './Deck';
 import PlayerHand from './PlayerHand';
-import { Fragments } from '../fixtures/fixtures';
 import { Fragment } from '../types';
 
-interface FieldProps {};
-
-function Field(props: FieldProps) {
-    const [deckFragments, setDeckFragments] = useState<Fragment[]>([]);
+function Field() {
     const [playerFragments, setPlayerFragments] = useState<Fragment[]>([]);
 
-    useEffect(() => {
-        const shuffledFragments = shuffle(Fragments);
-        setDeckFragments(shuffledFragments);
-
-        const topFragments = shuffledFragments.slice(0, 4);
-        setPlayerFragments(topFragments);
-    }, []);
+    function addCardToPlayerHand(fragment: Fragment) {
+        const updatedPlayerHand = [...playerFragments];
+        updatedPlayerHand.push(fragment);
+        setPlayerFragments(updatedPlayerHand);
+    }
 
     return (
         <>
-            <Deck deckCards={deckFragments} />
-            <PlayerHand cards={playerFragments} />
+            <Deck
+                addCardToPlayerHand={addCardToPlayerHand}
+                setPlayerFragments={setPlayerFragments}
+            />
+            {playerFragments.length > 0 && <PlayerHand cards={playerFragments} />}
         </>
     )
 }
