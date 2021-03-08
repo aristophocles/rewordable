@@ -21,7 +21,7 @@ function Field() {
                 isDrawEnabled={isDrawEnabled}
                 setPlayerFragments={setPlayerFragments}
             />
-            {playerFragments.length > 0 && <PlayerHand cards={playerFragments} />}
+            <PlayerHand cards={playerFragments} />
         </>
     )
 }

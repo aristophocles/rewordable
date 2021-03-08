@@ -2,17 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { Fragment } from '../types';
 
-interface CardProps {
+interface CardPreviewProps {
     fragment: Fragment;
 };
 
-function Card(props: CardProps) {
+function CardPreview(props: CardPreviewProps) {
     const Wrapper = styled.section`
         border-radius: 8px;
-        margin: 16px auto;
-        padding: 76px 56px;
+        margin: 4px auto;
+        padding: 24px 56px;
+        min-width: 38px;
         position: relative;
-        background: ${() => `linear-gradient(to bottom, ${props.fragment.color} 22%, white 22% 25%, black 25% 82%, white 82% 85%, ${props.fragment.color} 85%)`};
+        background: ${() => props.fragment.color || 'lightpink'};
     `;
 
     const CardValue = styled.div`
@@ -20,7 +21,7 @@ function Card(props: CardProps) {
         font-family: georgia;
         font-weight: bold;
         color: white;
-        min-width: 32px;
+        min-width: 14px;
         padding-top: 8px;
     `;
 
@@ -30,7 +31,7 @@ function Card(props: CardProps) {
         top: 0;
         left: 0;
         width: 40%;
-        height: 15%;
+        height: 65%;
         background: white;
     `;
 
@@ -49,11 +50,8 @@ function Card(props: CardProps) {
                     {props.fragment.value}
                 </PreviewValue>
             </Preview>
-            <CardValue>
-                {props.fragment.value}
-            </CardValue>
         </Wrapper>
     );
 }
 
-export default Card;
+export default CardPreview;
