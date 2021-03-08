@@ -6,6 +6,7 @@ import { Fragment } from '../types';
 
 interface DeckProps {
     addCardToPlayerHand: (key: Fragment) => void;
+    isDrawEnabled: boolean;
     setPlayerFragments: (key: Fragment[]) => void;
 };
 
@@ -35,8 +36,12 @@ function Deck(props: DeckProps) {
     `;
 
     function onDraw() {
+        if (!props.isDrawEnabled) {
+            return;
+        }
+
         if (isInitialDraw) {
-            const topFragments = deckFragments.slice(0, 5);
+            const topFragments = deckFragments.slice(0, 3);
             props.setPlayerFragments(topFragments);
             setIsInitialDraw(false);
         } else {

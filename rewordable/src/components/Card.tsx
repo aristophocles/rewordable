@@ -7,7 +7,6 @@ interface CardProps {
 };
 
 function Card(props: CardProps) {
-    console.log(props);
     const Wrapper = styled.section`
         border-radius: 8px;
         margin: 8px;

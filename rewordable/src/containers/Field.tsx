@@ -6,6 +6,8 @@ import { Fragment } from '../types';
 function Field() {
     const [playerFragments, setPlayerFragments] = useState<Fragment[]>([]);
 
+    const isDrawEnabled = playerFragments.length < 3;
+
     function addCardToPlayerHand(fragment: Fragment) {
         const updatedPlayerHand = [...playerFragments];
         updatedPlayerHand.push(fragment);
@@ -16,6 +18,7 @@ function Field() {
         <>
             <Deck
                 addCardToPlayerHand={addCardToPlayerHand}
+                isDrawEnabled={isDrawEnabled}
                 setPlayerFragments={setPlayerFragments}
             />
             {playerFragments.length > 0 && <PlayerHand cards={playerFragments} />}
