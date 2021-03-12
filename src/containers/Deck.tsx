@@ -10,6 +10,22 @@ interface DeckProps {
     setPlayerFragments: (key: Fragment[]) => void;
 };
 
+const DeckWrapper = styled.div`
+    border-radius: 8px;
+    margin-bottom: 24px;
+    padding: 68px 48px;
+    background: black;
+    min-height: 32px;
+    min-width: 32px;
+`;
+
+const Logo = styled.div`
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: pink;
+`;
+
 function Deck(props: DeckProps) {
     const [deckFragments, setDeckFragments] = useState<Fragment[]>([]);
     const [isInitialDraw, setIsInitialDraw] = useState<Boolean>(true);
@@ -18,22 +34,6 @@ function Deck(props: DeckProps) {
         const shuffledFragments = shuffle(Fragments);
         setDeckFragments(shuffledFragments);
     }, []);
-
-    const Wrapper = styled.div`
-        border-radius: 8px;
-        margin-bottom: 24px;
-        padding: 68px 48px;
-        background: black;
-        min-height: 32px;
-        min-width: 32px;
-    `;
-
-    const Logo = styled.div`
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: pink;
-    `;
 
     function onDraw() {
         if (!props.isDrawEnabled) {
@@ -53,9 +53,9 @@ function Deck(props: DeckProps) {
     }
 
     return (
-        <Wrapper onClick={onDraw}>
+        <DeckWrapper data-qa="deck-wrapper" onClick={onDraw}>
             <Logo />
-        </Wrapper>
+        </DeckWrapper>
     );
 }
 
