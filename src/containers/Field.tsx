@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Deck from './Deck';
 import PlayerHand from './PlayerHand';
+import CardPool from './CardPool';
 import { Fragment } from '../types';
 
 function Field() {
     const [playerFragments, setPlayerFragments] = useState<Fragment[]>([]);
+    const [cardPoolFragments, setCardPoolFragments] = useState<Fragment[]>([]);
 
-    const isDrawEnabled = playerFragments.length < 3;
+    const isPlayerDrawEnabled = playerFragments.length < 3;
 
     function addCardToPlayerHand(fragment: Fragment) {
         const updatedPlayerHand = [...playerFragments];
@@ -14,13 +16,21 @@ function Field() {
         setPlayerFragments(updatedPlayerHand);
     }
 
+    function addCardsToPool(fragments: Fragment[]) {
+        const updatedCardPoolFragments = cardPoolFragments.concat(fragments);
+        setCardPoolFragments(updatedCardPoolFragments);
+    }
+
     return (
         <>
             <Deck
                 addCardToPlayerHand={addCardToPlayerHand}
-                isDrawEnabled={isDrawEnabled}
+                addCardsToPool={addCardsToPool}
+                cardPoolFragments={cardPoolFragments}
+                isPlayerDrawEnabled={isPlayerDrawEnabled}
                 setPlayerFragments={setPlayerFragments}
             />
+            {cardPoolFragments.length > 0 && <CardPool cards={cardPoolFragments} />}
             <PlayerHand cards={playerFragments} />
         </>
     )

@@ -6,7 +6,9 @@ import { Fragment } from '../types';
 
 interface DeckProps {
     addCardToPlayerHand: (key: Fragment) => void;
-    isDrawEnabled: boolean;
+    addCardsToPool: (key: Fragment[]) => void;
+    cardPoolFragments: Fragment[];
+    isPlayerDrawEnabled: boolean;
     setPlayerFragments: (key: Fragment[]) => void;
 };
 
@@ -36,19 +38,25 @@ function Deck(props: DeckProps) {
     }, []);
 
     function onDraw() {
-        if (!props.isDrawEnabled) {
-            return;
-        }
-
         if (isInitialDraw) {
-            const topFragments = deckFragments.slice(0, 3);
+            const topFragments = deckFragments.splice(0, 3);
             props.setPlayerFragments(topFragments);
             setIsInitialDraw(false);
-        } else {
+        } else if (props.isPlayerDrawEnabled) {
             const nextFragment = deckFragments.shift();
             if (nextFragment) {
                 props.addCardToPlayerHand(nextFragment);
             }
+        } else {
+            const numberOfCardsInPool = props.cardPoolFragments.length;
+
+            if (numberOfCardsInPool === 3) {
+                return;
+            }
+
+            const numberToAdd = 3 - numberOfCardsInPool;
+            const topFragments = deckFragments.splice(0, numberToAdd);
+            props.addCardsToPool(topFragments);
         }
     }
 

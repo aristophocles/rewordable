@@ -38,18 +38,14 @@ function PlayerHand(props: PlayerHandProps) {
     const shouldShowHand = isShelfOpen && hasCards;
 
     const openShelf = (
-        <span data-qa="open-shelf">
-            {props.cards.map((card, i) =>
-                <Card data-qa="card" fragment={card} key={card.id} />
-            )}
-        </span>
+        props.cards.map((card) =>
+            <Card data-qa="card" fragment={card} key={card.id} />
+        )
     );
     const closedShelf = (
-        <span data-qa="closed-shelf">
-            {props.cards.map((card) =>
-                <CardPreview data-qa="card-preview" fragment={card} key={card.id} />
-            )}
-        </span>
+        props.cards.map((card) =>
+            <CardPreview data-qa="card-preview" fragment={card} key={card.id} />
+        )
     );
 
     const showDrawLine = !shouldShowHand && props.cards.length === 0;
